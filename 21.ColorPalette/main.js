@@ -84,7 +84,7 @@ var texture, paletteTex;
 var AR = null;
 var image = new Image();
 var colorImage = new Image();
-image.src = '../4KSample.jpg';
+image.src =  './media/Tiger-PNG-HD.png' // '../4KSample.jpg';
 colorImage.src = '../ColorPalette.jpg';
 colorImage.onload = () => {
     paletteTex = utils.createAndBindTexture(gl, colorImage);

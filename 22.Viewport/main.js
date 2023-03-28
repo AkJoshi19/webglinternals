@@ -57,7 +57,33 @@ console.log(gl.getParameter(gl.VIEWPORT));
 
 
 
+var getDiff = (startX, startY, endX, endY) => {
+    var obj = {
+        startX : startX, startY : startY, endX : endX, endY
+    };
+    var v = utils.getGPUCoords(obj); //-1 to +1
+    v = utils.getGPUCoords0To2(v); //0 to 2
+    var diffX = v.endX - v.startX;
+    var diffY = v.endY - v.startY;
+    return {
+        x : diffX, y : diffY
+    };  
+};
 
+ initializeEvents(gl, (startX, startY, endX, endY) => {
+    var diff = getDiff(startX, startY, endX, endY);
+    currSX += diff.x; currSY += diff.y;
+    currEX += diff.x; currEY += diff.y;
+    vertices = utils.prepareRectVec2(currSX, currSY, currEX, currEY);
+    buffer = utils.createAndBindBuffer(gl.ARRAY_BUFFER, gl.STATIC_DRAW, new Float32Array(vertices));
+    render(0, 0, gl.canvas.width, gl.canvas.height);;
+    currSX = lastSX; currSY = lastSY; currEX = lastEX; currEY = lastEY;
+}, (startX, startY, endX, endY) => {
+    var diff = getDiff(startX, startY, endX, endY);
+    lastSX += diff.x; lastSY += diff.y;
+    lastEX += diff.x; lastEY += diff.y;
+    currSX = lastSX; currSY = lastSY; currEX = lastEX; currEY = lastEY;
+}); 
 
 
 

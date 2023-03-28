@@ -1,7 +1,7 @@
 var utils = new WebGLUtils();
 var canvas = document.getElementById('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 300; //  window.innerWidth;
+canvas.height = 300; //window.innerHeight;
 var gl = utils.getGLContext(canvas);
 gl.clearColor(0.0, 0.0, 0.0, 1.0);
 gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
@@ -55,7 +55,7 @@ mix.onclick = () => {
 var codeTexture, texture;
 var image = new Image();
 var codeImage = new Image();
-codeImage.src = '../Capture.PNG';
+codeImage.src = './media/Tiger-PNG-HD.png';
 codeImage.onload = () => {
     codeTexture = utils.createAndBindTexture(gl, codeImage);
 };
