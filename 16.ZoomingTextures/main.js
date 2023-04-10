@@ -77,7 +77,7 @@ var render = () => {
     utils.linkGPUAndCPU({program : program, buffer : texBuffer, dims : 2, gpuVariable : 'texCoords'}, gl);
     gl.activeTexture(gl.TEXTURE0 + 0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.activeTexture(gl.TEXTURE0 + 1);
+    //gl.activeTexture(gl.TEXTURE0 + 1);
     gl.bindTexture(gl.TEXTURE_2D, codeTexture);
     //Step5
     gl.drawArrays(gl.TRIANGLES, 0, vertices.length/2);
@@ -122,8 +122,6 @@ initializeEvents(gl, (startX, startY, endX, endY) => {
     vertices = utils.prepareRectVec2(currSX, currSY, currEX, currEY);
     buffer = utils.createAndBindBuffer(gl.ARRAY_BUFFER, gl.STATIC_DRAW, new Float32Array(vertices));
     render();
-
-
 
 });
 

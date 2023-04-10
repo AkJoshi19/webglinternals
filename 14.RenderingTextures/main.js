@@ -15,8 +15,7 @@ out vec2 textureCoords; //Take input from vertex shader and serve to fragment sh
 void main () {
     gl_Position = vec4(position, 0.0, 1.0);
     textureCoords = texCoords;
-}
-`;
+}`;
 
 var fragmentShader = `#version 300 es
 precision mediump float;
@@ -33,9 +32,7 @@ void main() {
     } else {
         color = texture(uCode, textureCoords);
     }*/
-
-}
-`;
+}`;
 
 //Step2
 var program = utils.getProgram(gl, vertexShader, fragmentShader);
